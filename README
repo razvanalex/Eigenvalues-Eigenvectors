@@ -20,7 +20,7 @@ README
 	folosind relatia de recurenta:
                                                2
       P (lambda) = (d - lambda)P   (lambda) - s    P   (lambda) pt i=2:n
-	   i             i          i-1            i-1  i-2
+       i             i          i-1            i-1  i-2
 
 	unde P = 1 si P = d - lambda, iar s, d si lambda sunt date ca parametrii
           0        1   1
@@ -77,16 +77,16 @@ README
 	                                         (k - 1)
 	   - se rezolva sistemul (A - hI) * z = y        folosind Thomas
 	                         |__  __|
-                         _      \/                       _
-						| d1 - h	s1                    |
-                        |   s1    d2 - h   s2             |
-                        |           s2   d3 - h   .       |
-                        |              .      .     .     |
-                        |                .      .   s(n-1)|
-			         	|                  .      .       |
-						|_               s(n-1)  d(n) - h_|
+                             _      \/                       _
+			    | d1 - h	s1                    |
+                            |   s1    d2 - h   s2             |
+                            |           s2   d3 - h   .       |
+                            |              .      .     .     |
+                            |                .      .   s(n-1)|
+			    |                  .      .       |
+			    |_               s(n-1)  d(n) - h_|
               
-			                                         (k)
+			                             (k)
        - se normalizeaza rezultatul si se retine in y
 	   - se calculeaza calculeaza y' * A * y
        - se face h = valp pt a creste viteza de convergenta a metodei
