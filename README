@@ -1,0 +1,100 @@
+---------------------------------------------------------------------
+                              TEMA MN 2
+---------------------------------------------------------------------
+
+AUTOR
+  Smadu Razvan-Alexandru 315CB
+
+FISIERE INCLUSE
+  CalculezValProprii.m
+  IntervaleValProprii.m
+  LimiteValProprii.m
+  NrValProprii.m
+  PutereInv.m
+  ValoriPolinoame.m
+  README
+
+README
+  Cerinta 1
+    Functia ValoriPolinoame() calculeaza valoarea polinomului caracteristic
+	folosind relatia de recurenta:
+                                               2
+      P (lambda) = (d - lambda)P   (lambda) - s    P   (lambda) pt i=2:n
+	   i             i          i-1            i-1  i-2
+
+	unde P = 1 si P = d - lambda, iar s, d si lambda sunt date ca parametrii
+          0        1   1
+	ale functiei. In final se returneaza vectorul P. Valoarea in lambda este
+	valoarea in P(n).
+   
+  Cerinta 2
+    Functia NrValProprii() calculeaza numarul de valori proprii folosind
+	proprietatea unui sir Sturm. Algoritmul utilizat consta in parcurgerea
+	vectorului P (calculat din ValoriPolinoame()) si se compara semnele
+	valorilor 2 cate 2. In cazul in care o valoare este 0, atunci semnul
+	se considera a valorii anterioare (adica adun 1 sau scad 1, in functie
+	de semnul anterior). Daca are loc schimbere de semn, atunci in 
+	intervalul [P(i), P(i+1)] se afla o valoare proprie.
+  
+  Cerinta 3
+   Functia LimiteValProprii() calculeaza cele doua limite (inferioara si
+   superioara) intre care se gasesc valorile proprii. Prima data se 
+   aduc vectorii diagonala (superioara si inferioara) la aceeasi dimensiune,
+   se calculeaza t  ca fiind suma modulelor elementelor de pe cele 2 
+                  i
+   diagonale de pe linia i, iar apoi se calculeaza limitele ca fiind
+   valoarea minima respectiva maxima a sumei, respectiv diferentei dintre
+   elementele pe diagonala si t  calculat anterior. 
+                               i
+
+  Cerinta 4
+   Functia IntervaleValProprii() calculeaza intervalele intre care se afla
+   fiecare valoare proprie. Se initializeaza capetele vectorului r cu 
+   limitele inferioare si superioare. Se calculeaza, impartind intervalul
+   in jumatate (precum in metoda bisectiei), capetele intervalului, pana 
+   cand numarul de valori proprii din interval este cel care trebuie, la 
+   fiecare iteratie, eliminandu-se o valoare proprie din calcul. In final
+   se returneaza vectorul de capete de intervale.
+
+ Cerinta 5
+   Functia CalculezValProprii() calculeaza valorile proprii si le returneaza
+   intr-un vector. Algoritmul consta in calcularea intervalelor in care
+   se afla o singura valoare proprie; pentru fiecare interval se 
+   calculeaza valoarea proprie prin metoda bisectiei; se returneaza 
+   rezultatul final.
+   Functia Pn() calculeaza valoarea polinomului caracteristic in x, ca fiind
+   valoarea de pe pozitia n a vectorului de valori polinoame.
+   Functia Bisectie_ValP() este o functie ce aplica metoda bisectiei pentru
+   a calcula valorile proprii din intervalele calculate anterior. 
+   Aceasta functie a fost modificata pentru a se putea calcula pe functia
+   polinomului caracteristic.
+
+  Cerinta 6
+   Functia PutereInv() calculeaza vectorul propriu si valorile proprii
+   ale matricei tridiagonale prin metoda puterii inverse.
+   Algoritmul:
+     - cat timp mai exista iteratii sau nu s-a atins precizia dorita
+	                                         (k - 1)
+	   - se rezolva sistemul (A - hI) * z = y        folosind Thomas
+	                         |__  __|
+                         _      \/                       _
+						| d1 - h	s1                    |
+                        |   s1    d2 - h   s2             |
+                        |           s2   d3 - h   .       |
+                        |              .      .     .     |
+                        |                .      .   s(n-1)|
+			         	|                  .      .       |
+						|_               s(n-1)  d(n) - h_|
+              
+			                                         (k)
+       - se normalizeaza rezultatul si se retine in y
+	   - se calculeaza calculeaza y' * A * y
+       - se face h = valp pt a creste viteza de convergenta a metodei
+	   - se calculeaza a = A * y - lambda * y
+       - se verifica daca s-a obtinut precizia dorita
+	 - se returneaza rezultatul final. 
+
+    Nota: La implementarea inmultirilor matricilor exista 3 cazuri: cand i
+	este intre 2 si n-1 (exista 3 termeni la suma); cand i = 1 se aduna
+	doar ultimii 2 (primul nu exista); cand i = n se aduna primii 2 termeni
+	(ultimul nu exista).
